@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva - Ing. en Administración Pública</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6fb;
+      color: #333;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #c678b9;
+    }
+    .year {
+      margin-bottom: 2rem;
+    }
+    .semester {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background-color: #f5e1f2;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px #e3cfe4;
+    }
+    .semester h2 {
+      color: #a24fa0;
+    }
+    .subject {
+      background-color: #ffe9f3;
+      border: 1px solid #dfadd2;
+      border-radius: 5px;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .subject.done {
+      text-decoration: line-through;
+      background-color: #e9d0e3;
+    }
+    .note {
+      float: right;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Ingeniería en Administración Pública</h1>
+  <!-- Aquí va el contenido de los semestres (se mantiene igual) -->
+  <!-- ... -->
+
+  <script>
+    // Guardar y recuperar el estado con localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const subjects = document.querySelectorAll(".subject");
+      subjects.forEach((subject, index) => {
+        const saved = localStorage.getItem("subject_" + index);
+        if (saved === "done") subject.classList.add("done");
+
+        subject.addEventListener("click", () => {
+          subject.classList.toggle("done");
+          localStorage.setItem("subject_" + index, subject.classList.contains("done") ? "done" : "");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
